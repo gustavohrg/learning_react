@@ -3,15 +3,32 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+  state = {
+    persons: [
+      { name: 'Gustavo', age: 23 },
+      { name: 'Felipe', age: 17 },
+      { name: 'Carol', age: 24 },
+    ],
+  };
+
   render() {
     return (
       <div className='App'>
         <h1>Hello!</h1>
-        <Person name='Gustavo' age='23' />
-        <Person name='Felipe' age='17'>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+        />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+        >
           Sou irmão do Gustavo
         </Person>
-        <Person name='Julia' age='20' />
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age}
+        />
       </div>
     );
   }
