@@ -36,12 +36,20 @@ class App extends Component {
   };
 
   render() {
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer',
+    };
+
     return (
       <div className='App'>
         <h1>Hello!</h1>
         <p>A paragraph</p>
         {/* not the most efficient use of passing arguments */}
-        <button onClick={() => this.switchNameHandler('Guto!')}>
+        <button style={style} onClick={() => this.switchNameHandler('Guto!')}>
           Switch Name
         </button>
         <Person
