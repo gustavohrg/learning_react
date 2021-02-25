@@ -10,6 +10,7 @@ class App extends Component {
       { name: 'Carol', age: 24 },
     ],
     otherState: 'some value',
+    showPersons: false,
   };
 
   switchNameHandler = (newName) => {
@@ -35,6 +36,11 @@ class App extends Component {
     });
   };
 
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({ showPersons: !doesShow });
+  };
+
   render() {
     const style = {
       backgroundColor: 'white',
@@ -49,26 +55,30 @@ class App extends Component {
         <h1>Hello!</h1>
         <p>A paragraph</p>
         {/* not the most efficient use of passing arguments */}
-        <button style={style} onClick={() => this.switchNameHandler('Guto!')}>
+        <button style={style} onClick={this.togglePersonsHandler}>
           Switch Name
         </button>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-        />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          // best use of passing arguments
-          click={this.switchNameHandler.bind(this, 'Guto')}
-          changed={this.nameChangedHandler}
-        >
-          Sou irmão do Gustavo
-        </Person>
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age}
-        />
+        {this.state.showPersons === true ? (
+          <div>
+            <Person
+              name={this.state.persons[0].name}
+              age={this.state.persons[0].age}
+            />
+            <Person
+              name={this.state.persons[1].name}
+              age={this.state.persons[1].age}
+              // best use of passing arguments
+              click={this.switchNameHandler.bind(this, 'Guto')}
+              changed={this.nameChangedHandler}
+            >
+              Sou irmão do Gustavo
+            </Person>
+            <Person
+              name={this.state.persons[2].name}
+              age={this.state.persons[2].age}
+            />
+          </div>
+        ) : null}
       </div>
     );
   }
