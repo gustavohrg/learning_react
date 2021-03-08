@@ -80,7 +80,7 @@ class App extends Component {
         <p>A paragraph</p>
         {/* not the most efficient use of passing arguments */}
         <button style={style} onClick={this.togglePersonsHandler}>
-          Switch Name
+          Toggle persons
         </button>
         {persons}
       </div>
